@@ -1,7 +1,7 @@
 # CODECRAFT_WD_1
 # Interactive Navigation Menu with Scroll Effects & Theme Toggle
 
-![Project Preview] https://piyushsiingh.github.io/CODECRAFT_WD_1/
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Click_Here-blue?style=for-the-badge&logo=github)](https://piyushsiingh.github.io/CODECRAFT_WD_1/)
 
 A modern, responsive navigation menu with smooth scroll effects, theme switching, and interactive elements. Perfect for showcasing your web development skills.
 
