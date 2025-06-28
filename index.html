@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navigation styles */
+        #mainNav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4a6fa5;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4a6fa5;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Active link style */
+        .nav-links a.active {
+            color: #4a6fa5;
+            font-weight: bold;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Scrolled state */
+        #mainNav.scrolled {
+            background-color: #4a6fa5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #mainNav.scrolled .logo,
+        #mainNav.scrolled .nav-links a {
+            color: white;
+        }
+
+        #mainNav.scrolled .nav-links a:hover {
+            color: #f0f0f0;
+        }
+
+        #mainNav.scrolled .nav-links a::after {
+            background-color: white;
+        }
+
+        #mainNav.scrolled .nav-links a.active {
+            color: #f0f0f0;
+        }
+
+        /* Section styles for demonstration */
+        .section {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+        }
+
+        .home-section {
+            background-color: #f5f5f5;
+        }
+
+        .section:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav id="mainNav">
+        <div class="nav-container">
+            <div class="logo">MySite</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="section home-section">
+            <h1>Welcome to Our Website</h1>
+            <p>Scroll down to see the navigation menu effect</p>
+        </section>
+        <section id="about" class="section">
+            <h2>About Us</h2>
+            <p>Content about our company...</p>
+        </section>
+        <section id="services" class="section">
+            <h2>Our Services</h2>
+            <p>Details about our services...</p>
+        </section>
+        <section id="portfolio" class="section">
+            <h2>Portfolio</h2>
+            <p>Showcase of our work...</p>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>How to reach us...</p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nav = document.getElementById('mainNav');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // Change navbar style on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - nav.offsetHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Highlight active section in nav
+            window.addEventListener('scroll', function() {
+                let fromTop = window.scrollY + nav.offsetHeight + 50;
+                
+                navLinks.forEach(link => {
+                    const section = document.querySelector(link.getAttribute('href'));
+                    
+                    if (
+                        section.offsetTop <= fromTop &&
+                        section.offsetTop + section.offsetHeight > fromTop
+                    ) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            });
+
+            // Initialize - check if we're already scrolled on page load
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
