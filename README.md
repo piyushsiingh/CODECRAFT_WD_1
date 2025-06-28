@@ -39,3 +39,13 @@ A modern, responsive navigation menu with smooth scroll effects, theme switching
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/interactive-navigation.git
+   
+## 📞 Contact Me
+
+If you have any queries, suggestions, or just want to connect — feel free to reach out! 💌
+
+- 💼 LinkedIn: [Piyush Singh](https://www.linkedin.com/in/piyush-singh-0b276332a)
+- 📧 Email: piyush.siingh2005@gmail.com
+- 📱 Phone: +91 9887481882
+
+Made with ❤️ by [Piyush Singh](https://github.com/piyushsiingh)
