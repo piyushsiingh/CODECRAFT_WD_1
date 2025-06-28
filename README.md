@@ -46,6 +46,5 @@ If you have any queries, suggestions, or just want to connect — feel free to r
 
 - 💼 LinkedIn: [Piyush Singh](https://www.linkedin.com/in/piyush-singh-0b276332a)
 - 📧 Email: piyush.siingh2005@gmail.com
-- 📱 Phone: +91 9887481882
 
 Made with ❤️ by [Piyush Singh](https://github.com/piyushsiingh)
